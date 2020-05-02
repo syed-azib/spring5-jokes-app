@@ -1,6 +1,7 @@
 package azib.springframework.jokeapp.jokeapp.controller;
 
 import azib.springframework.jokeapp.jokeapp.services.JokeService;
+import azib.springframework.jokeapp.jokeapp.services.JokeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,16 +11,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class JokesController {
 
     @Autowired
-    JokeService jokeService;
+    private JokeService jokeService;
 
-    /*
-    // Dependency injection using constructor
+   /*
     public JokesController(JokeService jokeService) {
         this.jokeService = jokeService;
     }
-*/
 
-    @RequestMapping("/jokes")
+    */
+
+
+    @RequestMapping({"/",""})
     public String chuckJokes(Model model){
         model.addAttribute("jokes", jokeService.getJoke());
         return "chucknorris";
